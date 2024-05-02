@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
     //console.log(user)
     this.userService.login(user).subscribe((user: User) => {
       if (user.userId) {
-        //console.log('login success!!');
+        console.log('login success!!');
         alert('login success!!');
       } else {
-        //console.log('Invalid username or password');
+        console.log('Invalid username or password');
         alert('Invalid username or password');
         //Just commented
       }
