@@ -21,5 +21,8 @@ export class UserService {
   login(user: User): Observable<User>{ 
     return this.http.post<User>(this.api.concat('/login'), user, this.httpOptions);
   }
+  signUp(user: User): Observable<String>{
+    return this.http.post<String>(this.api, user, {responseType: 'text' as 'json' })
+  }
 
 }
