@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private userService: UserService) { }
+              private userService: UserService,
+              private router: Router) { }
   
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,14 +34,13 @@ export class LoginComponent implements OnInit {
     //console.log(user)
     this.userService.login(user).subscribe((user: User) => {
       if (user.userId) {
-        console.log('login success!!');
-        alert('login success!!');
+        //console.log('login success!!');
+        //alert('login success!!');
+        this.router.navigate(['homepage']);
+
       } else {
         console.log('Invalid username or password');
         alert('Invalid username or password');
-        alert('error')
-        alert('exit')
-        //Just commented
       }
     })
   }

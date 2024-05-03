@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit{
         //Redirecting to login page after user is registered
         this.router.navigate(['']);
       } else {
-        alert("Unable to register user!!");
+        alert("User name already exists!!");
       }
 
   })
