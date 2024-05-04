@@ -9,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit{
   execute(name: string): void {
-    console.log('Make appointment branch is executing '+name);
+    alert('Make appointment branch is executing '+name);
     console.log('Master branch is executing');
     
   }
 
-  test(): void {
+  testFileProessing(): void {
     alert('test');
   }
 
