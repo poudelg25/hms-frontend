@@ -1,0 +1,16 @@
+<p>New Appointment Details</p>
+<div>
+    <form [formGroup]="newAppointmentForm" (ngSubmit)="saveAppointment()">
+    
+        <label>Date and Time:</label>
+        <input type="datetime-local" id="dateTime" formControlName="dateTime" placeholder="Date and Time"/><br><br>
+        
+        <label>Doctor Id:</label>
+        <input type="number" id="doctorId" formControlName="doctorId" placeholder="Doctor Id"/><br><br>
+        
+        <label>Patient Id:</label>
+        <input type="number" id="patientId" formControlName="patientId" placeholder="Patient Id"/><br><br>
+        
+        <button type="submit">Save</button>
+    </form>
+</div>
