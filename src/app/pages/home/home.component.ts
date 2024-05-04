@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit{
 
   testFileProessing(): void {
     alert('test');
+    console.log('file processing in master');
   }
 
   ngOnInit(): void{
