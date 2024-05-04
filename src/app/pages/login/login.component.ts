@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
   
   ngOnInit(): void {
+    console.log('init called');
     this.loginForm = this.formBuilder.group({
       //Form fields
       userName: [''],

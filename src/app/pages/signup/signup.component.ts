@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit{
   }
 
   signUp(): void{
+    console.log('signing up');
     const user = this.signUpForm.value;
     this.userService.signUp(user).subscribe((result: string) => {
       console.log(result);
