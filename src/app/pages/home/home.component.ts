@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +7,18 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
-  execute(): void {
+export class HomeComponent implements OnInit{
+  execute(name: string): void {
+    alert('Make appointment branch is executing '+name);
     console.log('Master branch is executing');
+    
+  }
+
+  testFileProessing(): void {
+    alert('test');
+  }
+
+  ngOnInit(): void{
+    console.log('Init called');
   }
 }
