@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
       } else {
         console.log('Invalid username or password');
-        alert('Invalid username or password');
+        alert('Invalid username or password!!');
       }
     })
   }

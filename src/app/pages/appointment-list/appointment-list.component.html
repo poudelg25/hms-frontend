@@ -1,0 +1,33 @@
+<h2>Appointment List</h2>
+<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+  <button routerLink="/newAppointment" style="margin-left: 0%;">Create Appointment</button>
+  <div style="margin-left: auto;">
+    <input type="text" placeholder="Search Appointment">
+  </div>
+</div>
+
+<table style="border: 1px solid black; width: 100%;">
+  <thead>
+    <tr>
+      <th>Appointment ID</th>
+      <th>Patient ID</th>
+      <th>Doctor ID</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointmentList">
+
+      <td>{{appointment.appointmentId}}</td>
+      <td>{{appointment.patientId}}</td>
+      <td>{{appointment.doctorId}}</td>
+      <td>{{appointment.dateTime}}</td>
+      <td>
+        <button (click)="deleteAppointment(appointment.appointmentId)">Delete</button>
+        <button style="margin-left: 2px;" routerLink="/update/{{appointment.appointmentId}}">Edit</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table><br>
