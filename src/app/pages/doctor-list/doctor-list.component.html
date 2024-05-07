@@ -1,2 +1,33 @@
-<p>doctor-list works!</p>
-
+<h2>Doctor List</h2>
+<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <button routerLink="/newDoctor" style="margin-left: 0%;">Create New Doctor</button>
+    <div style="margin-left: auto;">
+        <input type="text" placeholder="Search Doctor">
+    </div>
+</div>
+<table style="border: 1px solid black;">
+    <thead>
+        <tr>
+            <th>Doctor ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Specialization</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let doctor of doctorList">
+            <td>{{doctor.doctorId}}</td>
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.gender}}</td>
+            <td>{{doctor.specialization}}</td>
+            <td>{{doctor.phoneNumber}}</td>
+            <td>{{doctor.email}}</td>
+            <td>
+                <button routerLink="/updateDoctor/{{doctor.doctorId}}">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

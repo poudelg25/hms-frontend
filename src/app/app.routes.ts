@@ -7,6 +7,7 @@ import { NewPatientComponent } from './pages/new-patient/new-patient.component';
 import { AppointmentListComponent } from './pages/appointment-list/appointment-list.component';
 import { PatientListComponent } from './pages/patient-list/patient-list.component';
 import { DoctorListComponent } from './pages/doctor-list/doctor-list.component';
+import { NewDoctorComponent } from './pages/new-doctor/new-doctor.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
     {path: 'updateAppointment/:id', component: NewAppointmentComponent },
     {path: 'patient-list', component: PatientListComponent },
     {path: 'doctor-list', component: DoctorListComponent },
-    {path: 'updatePatient/:id', component: NewPatientComponent }
+    {path: 'updatePatient/:id', component: NewPatientComponent },
+    {path: 'newDoctor', component: NewDoctorComponent}
 ];
