@@ -20,4 +20,16 @@ export class PatientService {
   savePatient(patient: Patient): Observable<String>{
     return this.http.post<string>(this.api, patient, {responseType: 'text' as 'json'});
   }
+
+  getPatientList(): Observable<Patient[]>{
+    return this.http.get<Patient[]>(this.api, this.httpOption);
+  }
+
+  updatePatient(pid: number, patient: Patient): Observable<String>{
+    return this.http.put<string>(this.api.concat('/').concat(pid+''), patient, {responseType: 'text' as 'json'});
+  }
+
+  getPatientById(id: number): Observable<Patient>{
+    return this.http.get<Patient>(this.api.concat('/').concat(id + ''));
+  }
 }
