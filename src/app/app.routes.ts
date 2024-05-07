@@ -16,7 +16,8 @@ export const routes: Routes = [
     {path: 'newAppointment', component: NewAppointmentComponent },
     {path: 'newPatient', component: NewPatientComponent },
     {path: 'appointment-list', component: AppointmentListComponent },
-    {path: 'update/:id', component: NewAppointmentComponent },
+    {path: 'updateAppointment/:id', component: NewAppointmentComponent },
     {path: 'patient-list', component: PatientListComponent },
-    {path: 'doctor-list', component:DoctorListComponent}
+    {path: 'doctor-list', component: DoctorListComponent },
+    {path: 'updatePatient/:id', component: NewPatientComponent }
 ];

@@ -1,6 +1,6 @@
 <h2>Appointment List</h2>
 <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-  <button routerLink="/newAppointment" style="margin-left: 0%;">Create Appointment</button>
+  <button routerLink="/newAppointment" style="margin-left: 0%;">Create New Appointment</button>
   <div style="margin-left: auto;">
     <input type="text" placeholder="Search Appointment">
   </div>
@@ -25,7 +25,7 @@
       <td>{{appointment.dateTime}}</td>
       <td>
         <button (click)="deleteAppointment(appointment.appointmentId)">Delete</button>
-        <button style="margin-left: 2px;" routerLink="/update/{{appointment.appointmentId}}">Edit</button>
+        <button style="margin-left: 2px;" routerLink="/updateAppointment/{{appointment.appointmentId}}">Edit</button>
       </td>
 
     </tr>

@@ -1,1 +1,40 @@
-<p>patient-list works!</p>
+<h2>Patient List</h2>
+<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+    <button routerLink="/newPatient" style="margin-left: 0%;">Create New Patient</button>
+    <div style="margin-left: auto;">
+      <input type="text" placeholder="Search Patient">
+    </div>
+  </div>
+
+  <table style="border: 1px solid black; width: 100%;">
+    <thead>
+      <tr>
+        <th>Patient ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>SSN</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Medical History</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patientList">
+        <td>{{patient.patientId}}</td> 
+        <td>{{patient.name}}</td>
+        <td>{{patient.gender}}</td>
+        <td>{{patient.ssn}}</td>
+        <td>{{patient.dateOfBirth}}</td>
+        <td>{{patient.address}}</td>
+        <td>{{patient.phoneNumber}}</td>
+        <td>{{patient.email}}</td>
+        <td>{{patient.medicalHistory}}</td>
+        <td>
+          <button style="margin-left: 2px;" routerLink="/updatePatient/{{patient.patientId}}">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table><br>

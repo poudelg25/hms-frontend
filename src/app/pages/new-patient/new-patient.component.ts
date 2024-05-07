@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientService } from '../../services/patient.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Patient } from '../../models/patient';
 
 @Component({
   selector: 'app-new-patient',
@@ -13,10 +14,12 @@ import { Router } from '@angular/router';
 export class NewPatientComponent implements OnInit{
 
   newPatientForm: FormGroup;
+  pid: number;
 
   constructor(private formBuilder: FormBuilder,
               private patientService: PatientService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
   
   ngOnInit(): void {
     this.newPatientForm = this.formBuilder.group({
@@ -28,21 +31,40 @@ export class NewPatientComponent implements OnInit{
       email: [''],
       medicalHistory: [''],
       ssn: [''],
-    })
+    });
+    this.pid = parseInt(this.route.snapshot.paramMap.get('id'));
+    //alert(this.pid);
+    if (this.pid) {
+      this.patientService.getPatientById(this.pid).subscribe((patientData: Patient) => {
+        this.newPatientForm.patchValue(patientData);
+      })
+    }
   }
 
   savePatient(): void{
     //console.log(this.newPatientForm.value);
     const patientData = this.newPatientForm.value;
-    this.patientService.savePatient(patientData).subscribe((result: string) => {
 
-      if (result === 'success') {
-        alert('Patient record created successfully!!');
-        //Redirecting to home page after patient record is created
-        this.router.navigate(['homepage']);
-      } else {
-        alert(result);
-      }
-    })
+    if (this.pid) {
+      this.patientService.updatePatient(this.pid, patientData).subscribe((result: string) => {
+        if (result === 'success') {
+          alert('Patient record updated successfully!!');
+          this.router.navigate(['patient-list']);
+        } else {
+          alert(result);
+          this.router.navigate(['patient-list']);
+        }
+      })
+    } else {
+      this.patientService.savePatient(patientData).subscribe((result: string) => {
+        if (result === 'success') {
+          alert('Patient record created successfully!!');
+          //Redirecting to home page after patient record is created
+          this.router.navigate(['patient-list']);
+        } else {
+          alert(result);
+        }
+      })
+    }
   }
 }
