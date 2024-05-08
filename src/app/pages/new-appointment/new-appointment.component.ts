@@ -40,22 +40,23 @@ export class NewAppointmentComponent implements OnInit {
 
   }
   saveAppointment(): void {
-    //console.log(this.newAppointmentForm.value);
     const appointmentData = this.newAppointmentForm.value;
     if (this.appointmentId) {
-      this.appointmentService.updateAppointment(this.appointmentId, appointmentData).subscribe((result: string) => {
-        if (result === 'success') {
-          alert('Appointed record updated successfully!!');
-          this.router.navigate(['appointment-list']);
-        } else {
-          alert(result);
-          this.router.navigate(['appointment-list']);
-        }
-      });
+      const confirmUpdate = confirm("Are you sure you want to update this appointment?");
+      if (confirmUpdate) {
+        this.appointmentService.updateAppointment(this.appointmentId, appointmentData).subscribe((result: string) => {
+          if (result === 'success') {
+            alert(`Appointed record (id: ${this.appointmentId}) updated successfully!!`);
+            this.router.navigate(['appointment-list']);
+          } else {
+            alert(result);
+          }
+        });
+      }
     } else {
       this.appointmentService.saveAppointment(appointmentData).subscribe((result: string) => {
         if (result === 'success') {
-          alert('Appointment record created successfully!!');
+          alert(`Appointment on (time: ${appointmentData.dateTime}) created successfully!!`);
           //Redirecting to home page after Appointment is created
           this.router.navigate(['appointment-list']);
         } else {

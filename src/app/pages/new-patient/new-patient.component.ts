@@ -46,19 +46,21 @@ export class NewPatientComponent implements OnInit{
     const patientData = this.newPatientForm.value;
 
     if (this.pid) {
-      this.patientService.updatePatient(this.pid, patientData).subscribe((result: string) => {
-        if (result === 'success') {
-          alert('Patient record updated successfully!!');
-          this.router.navigate(['patient-list']);
-        } else {
-          alert(result);
-          this.router.navigate(['patient-list']);
-        }
-      })
+      const confirmUpdate = confirm("Are you sure you want to update this patient?");
+      if (confirmUpdate) {
+        this.patientService.updatePatient(this.pid, patientData).subscribe((result: string) => {
+          if (result === 'success') {
+            alert(`Patient record (id: ${this.pid}, name: ${patientData.name}) updated successfully!!`);
+            this.router.navigate(['patient-list']);
+          } else {
+            alert(result);
+          }
+        })
+      }
     } else {
       this.patientService.savePatient(patientData).subscribe((result: string) => {
         if (result === 'success') {
-          alert('Patient record created successfully!!');
+          alert(`Patient record (name: ${patientData.name}) created successfully!!`);
           //Redirecting to home page after patient record is created
           this.router.navigate(['patient-list']);
         } else {

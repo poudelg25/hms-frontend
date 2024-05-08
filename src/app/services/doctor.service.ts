@@ -18,4 +18,16 @@ export class DoctorService {
   getDoctorList(): Observable<Doctor[]>{
     return this.http.get<Doctor[]>(this.api, this.httpOptions);
   }
+
+  saveDoctor(doctor: Doctor): Observable<string>{
+    return this.http.post<string>(this.api, doctor, { responseType: 'text' as 'json' });
+  }
+
+  getDoctorById(id: number): Observable<Doctor>{
+    return this.http.get<Doctor>(this.api.concat('/').concat(id + ''));
+  }
+
+  updateDoctor(doctorId: number, doctor: Doctor): Observable<string>{
+    return this.http.put<string>(this.api.concat('/').concat(doctorId+''), doctor, { responseType: 'text' as 'json' });
+  }
 }
